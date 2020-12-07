@@ -1,3 +1,0 @@
-[submodule "mongo-c-driver-b"]
-	path = mongo-c-driver-b
-	url = ./mongo-c-driver-b
