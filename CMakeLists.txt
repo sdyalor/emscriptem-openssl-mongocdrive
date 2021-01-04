@@ -1,10 +1,14 @@
 project(ProjectName)
 # cmake_minimum_required(VERSION 3.13.4)
 #cmake_minimum_required(VERSION 3.19)
+SET(GCC_COVERAGE_COMPILE_FLAGS "")
+# SET(GCC_COVERAGE_LINK_FLAGS    "-s TOTAL_MEMORY=33554432")
+# SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
+# SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
 
-
-# include(add_mongo.cmake)
 include(add_openssl.cmake)
+# include(add_borringssl.cmake)
+include(add_mongo.cmake)
 
 # set(TARGET_NAME "mongo")
 

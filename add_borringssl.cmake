@@ -1,6 +1,7 @@
 include(FetchContent)
 FetchContent_Declare(openssl
-  URL               https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.1.tar.gz
+  GIT_REPOSITORY    https://boringssl.googlesource.com/boringssl
+  GIT_TAG           master
   SOURCE_DIR        "${CMAKE_BINARY_DIR}/openssl-src"
   BINARY_DIR        "${CMAKE_BINARY_DIR}/openssl-build"
   CONFIGURE_COMMAND ""
@@ -11,15 +12,13 @@ FetchContent_Declare(openssl
 )
 FetchContent_GetProperties(openssl)
 if(NOT openssl_POPULATED)
-set(LIBRESSL_SKIP_INSTALL ON)
-set(LIBRESSL_APPS OFF)
-set(LIBRESSL_TESTS OFF)
-set(ENABLE_ASM OFF)
+set(OPENSSL_NO_ASM ON)
 set(ENABLE_EXTRATESTS OFF)
 set(ENABLE_NC OFF)
+set(BORINGSSL_ALLOW_CXX_RUNTIME OFF)
+set(INITIAL_MEMORY 36554432)
   FetchContent_Populate(openssl)
   add_subdirectory(${openssl_SOURCE_DIR} ${openssl_BINARY_DIR})
   # set(OPENSSL_CRYPTO_LIBRARY crypto)
   # set(OPENSSL ssl)
-  # find_package(LIBRESSL REQUIRED)
 endif()
